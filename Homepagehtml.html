@@ -1,0 +1,208 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFix Hardware - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        main img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        section {
+            margin-top: 30px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 15px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #ddd;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>QuickFix Hardware</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Contact</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <img src="f:\CP CODE\images\paint.webp" alt="Paint Icon">
+        <h2>Your One-Stop Hardware Shop!</h2>
+
+        <section>
+            <button>Paint</button>
+            <button>Tools</button>
+            <button>Building Supplies</button>
+        </section>
+
+        <div class="products">
+            <div class="product-card">
+                <img src="images/hammer.png" alt="Hammer">
+                <h3>Hammer</h3>
+                <p>Durable steel hammer for all your construction needs.</p>
+            </div>
+            <div class="product-card">
+                <img src="images/drill machine.png" alt="Drill Machine">
+                <h3>Drill Machine</h3>
+                <p>High-powered drill for professional and DIY projects.</p>
+            </div>
+            <div class="product-card">
+                <img src="images/cement.png" alt="Cement Bags">
+                <h3>Cement</h3>
+                <p>Premium quality cement for strong foundations.</p>
+            </div>
+        </div>
+        <script>
+    const buttons = document.querySelectorAll("section button");
+    const productCards = document.querySelectorAll(".product-card");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const category = button.textContent.toLowerCase().replace(" ", "");
+
+            productCards.forEach(card => {
+                const cardCategory = card.getAttribute("data-category");
+                if (cardCategory === category || category === "paint") {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    });
+</script><script>
+    const buttons = document.querySelectorAll("section button");
+    const productCards = document.querySelectorAll(".product-card");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const category = button.textContent.toLowerCase().replace(" ", "");
+
+            productCards.forEach(card => {
+                const cardCategory = card.getAttribute("data-category");
+                if (cardCategory === category || category === "paint") {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    });
+<script>
+    const buttons = document.querySelectorAll("section button");
+    const productCards = document.querySelectorAll(".product-card");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const category = button.textContent.toLowerCase().replace(" ", "");
+
+            productCards.forEach(card => {
+                const cardCategory = card.getAttribute("data-category");
+                if (cardCategory === category || category === "paint") {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
+    </main>
+
+    <footer>
+        <a href="#">Contact Info</a>
+        <a href="#">Hours</a>
+        <p>&copy; 2025 QuickFix Hardware. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

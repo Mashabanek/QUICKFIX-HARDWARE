@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Management - QuickFix Hardware</title>
+    <style>
+        <?php
+// Sample product array (replace with database logic in real use)
+$products = [
+    ['id' => 1, 'name' => 'Hammer', 'description' => 'Steel claw hammer', 'price' => 259.00],
+    ['id' => 2, 'name' => 'Screwdriver', 'description' => 'Flat head screwdriver', 'price' => 89.99],
+];
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["add"])) {
+    $newProduct = [
+        'id' => count($products) + 1,
+        'name' => htmlspecialchars($_POST["name"]),
+        'description' => htmlspecialchars($_POST["description"]),
+        'price' => floatval($_POST["price"])
+    ];
+    $products[] = $newProduct;
+}
+
+// Handle deletion
+if (isset($_GET["delete"])) {
+    $deleteId = intval($_GET["delete"]);
+    $products = array_filter($products, fn($p) => $p['id'] !== $deleteId);
+}
+
+// Calculate total value
+$totalValue = array_reduce($products, fn($sum, $p) => $sum + $p['price'], 0);
+
+
+
+
+<div class="total">
+    Total Inventory Value: R<?= number_format($totalValue, 2) ?>
+</div>
+
+</body>
+</html>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            background: white;
+            border-collapse: collapse;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        a.delete-btn {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Product Management</h1>
+
+    <form action="" method="POST">
+        <input type="text" name="name" placeholder="Product Name" required>
+        <textarea name="description" placeholder="Product Description" rows="3" required></textarea>
+        <input type="number" step="0.01" name="price" placeholder="Price (R259.00)" required>
+        <input type="submit" name="add" value="Add Product">
+        <main>
+            <h2>Fearted Products</h2>
+            <div class = "product">
+                <img src="f:\CP CODE\images\hammer.png"alt = "Hammer">
+                <pHammer - R50><button>Add to cart</button></p>
+                </div>
+                <div class ="product">
+                    <img src ="f:\CP CODE\images\drill machine.png" alt ="drill">
+                    <p>Drill -R259<button>Add to cart</button></p>
+                    </div>
+                </main>
+    </form>
+</body>
+</html>                                                              
