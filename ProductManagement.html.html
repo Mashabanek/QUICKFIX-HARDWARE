@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Management - QuickFix Hardware</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Form styling */
+        form {
+            background: #fff;
+            padding: 20px;
+            margin: auto;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        form input[type="submit"] {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background: #218838;
+        }
+
+        /* Product table */
+        table {
+            width: 90%;
+            margin: 30px auto;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+
+        a.delete-btn {
+            color: red;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Featured products */
+        .products-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 200px;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .product button:hover {
+            background: #0056b3;
+        }
+
+        .total {
+            text-align: center;
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>QuickFix Hardware - Product Management</h1>
+
+<!-- Add product form -->
+<form action="" method="POST">
+    <input type="text" name="name" placeholder="Product Name" required>
+    <textarea name="description" placeholder="Product Description" rows="3" required></textarea>
+    <input type="number" step="0.01" name="price" placeholder="Price (R259.00)" required>
+    <input type="submit" name="add" value="Add Product">
+</form>
+
+<!-- Product Table -->
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price (R)</th>
+        <th>Action</th>
+    </tr>
+    <?php foreach ($products as $p): ?>
+        <tr>
+            <td><?= $p['id'] ?></td>
+            <td><?= $p['name'] ?></td>
+            <td><?= $p['description'] ?></td>
+            <td><?= number_format($p['price'], 2) ?></td>
+            <td><a href="?delete=<?= $p['id'] ?>" class="delete-btn">Delete</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<!-- Featured Products -->
+<div class="products-section">
+    <h2>Featured Products</h2>
+    <div class="products">
+        <div class="product">
+            <img src="images/hammer.png" alt="Hammer">
+            <p><b>Hammer</b></p>
+            <p>R50</p>
+            <button>Add to cart</button>
+        </div>
+        <div class="product">
+            <img src="images/drill-machine.png" alt="Drill">
+            <p><b>Drill</b></p>
+            <p>R259</p>
+            <button>Add to cart</button>
+        </div>
+    </div>
+</div>
+
+<!-- Total Value -->
+<div class="total">
+    Total Inventory Value: R<?= number_format($totalValue, 2) ?>
+</div>
+
+</body>
+</html>
